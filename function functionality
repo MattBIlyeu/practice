@@ -1,0 +1,20 @@
+//Shows use of firstclass functions.
+var passengers = [  { name: "Jane Doloop", paid: true, ticket: "coach" },
+                    { name: "Dr. Evel", paid: true, ticket: "firstclass" },
+                    { name: "Sue Property", paid: false, ticket: "firstclass" },
+                    { name: "John Funcall", paid: true, ticket: "coach" } ];
+function consoleLogName (passenger) {
+    console.log(this.name+" is my name");
+}
+function addAFunction (array, funct) {
+    for (let i = 0; i < array.length; i++) {
+        array[i].funct = funct;
+    }
+}
+function runFunctions (array) {
+    for (let i = 0; i < array.length; i ++) {
+        array[i].funct();
+    }
+}
+addAFunction (passengers, consoleLogName);
+runFunctions (passengers);
